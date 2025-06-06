@@ -19,7 +19,7 @@ def predict():
     data = request.get_json()
     features = data.get("features", [])
 
-    if not features or len(features) != 9:
+    if not features or len(features) != 10:
         return jsonify({"error": "Please provide exactly 9 features"}), 400
 
     try:
