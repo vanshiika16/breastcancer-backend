@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["http://localhost:3000", "https://breastcancer-backend-wh47.onrender.com"])  # allow both local and deployed frontend
 
 # Load the trained model
 with open("model.pkl", "rb") as file:
