@@ -20,7 +20,7 @@ def predict():
     features = data.get("features", [])
 
     if not features or len(features) != 10:
-        return jsonify({"error": "Please provide exactly 9 features"}), 400
+        return jsonify({"error": "Please provide exactly 10 features"}), 400
 
     try:
         prediction = model.predict([features])[0]
