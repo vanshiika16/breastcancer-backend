@@ -4,11 +4,15 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000", "https://breastcancer-backend-wh47.onrender.com"])  # allow both local and deployed frontend
+CORS(app)  # Allows all origins; safe for demo/testing — restrict in production
 
 # Load the trained model
 with open("model.pkl", "rb") as file:
     model = pickle.load(file)
+
+@app.route("/", methods=["GET"])
+def home():
+    return "✅ Breast Cancer Prediction API is running!"
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -29,4 +33,4 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, host="0.0.0.0", port=5000)
